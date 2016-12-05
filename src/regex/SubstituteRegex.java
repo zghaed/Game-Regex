@@ -52,9 +52,9 @@ public class SubstituteRegex extends Regex{
 //		String code = m2.group();
 		
 		mutatedCode = (c.getBefore()).replace(grp,parts[rnd]);
-		System.out.println("--------------");
-		System.out.println(grp);
-		System.out.println("--------------");
+//		System.out.println("--------------");
+//		System.out.println(grp);
+//		System.out.println("--------------");
 		c.setAfter( grp + ","  + mutatedCode);
 	//	c.setIndex(m.start());
 		return c;

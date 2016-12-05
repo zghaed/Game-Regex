@@ -17,22 +17,64 @@ public class Main {
     	ArrayList<Regex> arrayrx = new ArrayList<Regex>();
     	
     	// Create objects of all regular expressions and add them to the arraylist
+    	
+    	//Operators
     	EqualEqualRegex equalrx = new EqualEqualRegex();
     	arrayrx.add(equalrx);
+    	DivideRegex dividetrx = new DivideRegex();
+    	arrayrx.add(dividetrx);
+    	LessThanRegex lessrx = new LessThanRegex();
+    	arrayrx.add(lessrx);
+    	MinusRegex minusrx = new MinusRegex();
+    	arrayrx.add(minusrx);
+    	PlusRegex plusrx = new PlusRegex();
+    	arrayrx.add(plusrx);
+    	RemainderRegex remainderrx = new RemainderRegex();
+    	arrayrx.add(remainderrx);
+    	
+    	//Semicolon
     	SemicolonRegex semicolonrx = new SemicolonRegex();
     	arrayrx.add(semicolonrx);
+    	AddSemicolonRegex addsemirx = new AddSemicolonRegex();
+    	arrayrx.add(addsemirx);
+    	
+    	//Types
+    	BoolTypeRegex booltyperx = new BoolTypeRegex();
+    	arrayrx.add(booltyperx);
+    	IntTypeRegex inttyperx = new IntTypeRegex();
+    	arrayrx.add(inttyperx);
+    	StringTypeRegex stringtyperx = new StringTypeRegex();
+    	arrayrx.add(stringtyperx);
+    	
+    	//Function
     	ParenthesesRegex parenthesisrx = new ParenthesesRegex();
     	arrayrx.add(parenthesisrx);
-    	BreakRegex breakrx = new BreakRegex();
-    	arrayrx.add(breakrx);
+    	VoidRegex voidrx = new VoidRegex();
+    	arrayrx.add(voidrx);
     	ReturnRegex returnrx = new ReturnRegex();
     	arrayrx.add(returnrx);
     	MainDeclRegex mainrx = new MainDeclRegex();
     	arrayrx.add(mainrx);
+    	
+    	//Break
+    	BreakRegex breakrx = new BreakRegex();
+    	arrayrx.add(breakrx);
+    	
+    	//Class
     	ExtendRegex extendrx = new ExtendRegex();
     	arrayrx.add(extendrx);
     	ThisRegex thisrx = new ThisRegex();
     	arrayrx.add(thisrx);
+    	CloseBracketRegex closebracketrx = new CloseBracketRegex();
+    	arrayrx.add(closebracketrx); 	
+    	PublicRegex publicrx = new PublicRegex();
+    	arrayrx.add(publicrx);
+    	
+    	//Array
+    	ZeroArrayRegex zerorx = new ZeroArrayRegex();
+    	arrayrx.add(zerorx);
+    	SizeRegex sizerx = new SizeRegex();
+    	arrayrx.add(sizerx);
     	
     	Change c = new Change();
     	c.setBefore(program);
@@ -46,7 +88,8 @@ public class Main {
     			fileName2 = fileName + Integer.toString(i) + ".txt";
     			String newProgram = c.getAfter();
     			writeTest(c.getAfter(),(fileName2));
-    			c.setBefore(newProgram);
+    			//c.setBefore(newProgram);
+    			c.setBefore(program);
     		}
     	}
    
