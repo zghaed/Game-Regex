@@ -12,11 +12,32 @@ import java.util.regex.Pattern;
 public class Main {
 
 	public static void main(String[] args) {
-		String adr = "/Users/zahra/Documents/workspace/Regex/tests/test7.txt";
+		String adr = "/Users/zahra/Documents/workspace/Game-Regex/src/test/test.java";
     	String program = readTest(adr);
     	ArrayList<Regex> arrayrx = new ArrayList<Regex>();
+    	ArrayList<Regex> arrayrx2 = new ArrayList<Regex>();
+    	ArrayList<Regex> arrayrx3 = new ArrayList<Regex>();
     	
     	// Create objects of all regular expressions and add them to the arraylist
+    	
+    	//BEGINNERS
+    	
+    	//General
+    	CloseBracketRegex closebracketrx = new CloseBracketRegex();
+    	arrayrx.add(closebracketrx); 	
+    	//Semicolon
+//    	SemicolonRegex semicolonrx = new SemicolonRegex();
+//    	arrayrx.add(semicolonrx);
+    	AddSemicolonRegex addsemirx = new AddSemicolonRegex();
+    	arrayrx.add(addsemirx);
+    	
+    	//Types
+    	BoolTypeRegex booltyperx = new BoolTypeRegex();
+    	arrayrx.add(booltyperx);
+    	IntTypeRegex inttyperx = new IntTypeRegex();
+    	arrayrx.add(inttyperx);
+    	StringTypeRegex stringtyperx = new StringTypeRegex();
+    	arrayrx.add(stringtyperx);
     	
     	//Operators
     	EqualEqualRegex equalrx = new EqualEqualRegex();
@@ -32,49 +53,39 @@ public class Main {
     	RemainderRegex remainderrx = new RemainderRegex();
     	arrayrx.add(remainderrx);
     	
-    	//Semicolon
-    	SemicolonRegex semicolonrx = new SemicolonRegex();
-    	arrayrx.add(semicolonrx);
-    	AddSemicolonRegex addsemirx = new AddSemicolonRegex();
-    	arrayrx.add(addsemirx);
-    	
-    	//Types
-    	BoolTypeRegex booltyperx = new BoolTypeRegex();
-    	arrayrx.add(booltyperx);
-    	IntTypeRegex inttyperx = new IntTypeRegex();
-    	arrayrx.add(inttyperx);
-    	StringTypeRegex stringtyperx = new StringTypeRegex();
-    	arrayrx.add(stringtyperx);
+    	//INTERMEDIATE
     	
     	//Function
-    	ParenthesesRegex parenthesisrx = new ParenthesesRegex();
-    	arrayrx.add(parenthesisrx);
+//    	ParenthesesRegex parenthesisrx = new ParenthesesRegex();
+//    	arrayrx.add(parenthesisrx);
     	VoidRegex voidrx = new VoidRegex();
-    	arrayrx.add(voidrx);
+    	arrayrx2.add(voidrx);
     	ReturnRegex returnrx = new ReturnRegex();
-    	arrayrx.add(returnrx);
+    	arrayrx2.add(returnrx);
     	MainDeclRegex mainrx = new MainDeclRegex();
-    	arrayrx.add(mainrx);
+    	arrayrx2.add(mainrx);
     	
     	//Break
     	BreakRegex breakrx = new BreakRegex();
-    	arrayrx.add(breakrx);
+    	arrayrx2.add(breakrx);
+    	
+    	//ADVANCED
     	
     	//Class
     	ExtendRegex extendrx = new ExtendRegex();
-    	arrayrx.add(extendrx);
+    	arrayrx3.add(extendrx);
     	ThisRegex thisrx = new ThisRegex();
-    	arrayrx.add(thisrx);
-    	CloseBracketRegex closebracketrx = new CloseBracketRegex();
-    	arrayrx.add(closebracketrx); 	
+    	arrayrx3.add(thisrx);
     	PublicRegex publicrx = new PublicRegex();
-    	arrayrx.add(publicrx);
+    	arrayrx3.add(publicrx);
     	
     	//Array
     	ZeroArrayRegex zerorx = new ZeroArrayRegex();
-    	arrayrx.add(zerorx);
+    	arrayrx3.add(zerorx);
     	SizeRegex sizerx = new SizeRegex();
-    	arrayrx.add(sizerx);
+    	arrayrx3.add(sizerx);
+    	LengthRegex lengthrx = new LengthRegex();
+    	arrayrx3.add(lengthrx);
     	
     	Change c = new Change();
     	c.setBefore(program);
@@ -84,12 +95,13 @@ public class Main {
     	for (int i=0; i<arrayrx.size(); i++){
     		if (isContain(program,arrayrx.get(i))){
     			System.out.println("********************* "+ arrayrx.get(i).getName());
+    			System.out.println(c.getBefore());
     			arrayrx.get(i).change(c);
     			fileName2 = fileName + Integer.toString(i) + ".txt";
     			String newProgram = c.getAfter();
     			writeTest(c.getAfter(),(fileName2));
-    			//c.setBefore(newProgram);
-    			c.setBefore(program);
+    			c.setBefore(newProgram);
+    			//c.setBefore(program);
     		}
     	}
    
@@ -113,6 +125,7 @@ public class Main {
 		try (BufferedReader br = new BufferedReader(new FileReader(adr)))
 		{
     		String sCurrentLine;
+//    		br.readLine();
 			while ((sCurrentLine = br.readLine()) != null) {
 				program += sCurrentLine;
 				program += "\n";
