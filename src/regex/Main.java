@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-	public static void main(String[] args) {
-		String adr = "/Users/zahra/Documents/workspace/Game-Regex/src/test/test.java";
+	public static void main(String [] args) {
+		String adr = "/Users/zahra/Documents/workspace/Game-Regex/src/test/input/6.java";
     	String program = readTest(adr);
     	ArrayList<Regex> arrayrx = new ArrayList<Regex>();
     	ArrayList<Regex> arrayrx2 = new ArrayList<Regex>();
@@ -30,6 +30,14 @@ public class Main {
 //    	arrayrx.add(semicolonrx);
     	AddSemicolonRegex addsemirx = new AddSemicolonRegex();
     	arrayrx.add(addsemirx);
+    	ClassDeclRegex classrx = new ClassDeclRegex();
+    	arrayrx.add(classrx);
+    	
+    	//Main
+    	MainStringRegex mainstrrx = new MainStringRegex();
+    	arrayrx.add(mainstrrx);
+    	MainArgsRegex mainargsrx = new MainArgsRegex();
+    	arrayrx.add(mainargsrx);
     	
     	//Types
     	BoolTypeRegex booltyperx = new BoolTypeRegex();
@@ -50,6 +58,8 @@ public class Main {
     	arrayrx.add(minusrx);
     	PlusRegex plusrx = new PlusRegex();
     	arrayrx.add(plusrx);
+    	PlusEqualRegex plusequalrx = new PlusEqualRegex();
+    	arrayrx.add(plusequalrx);
     	RemainderRegex remainderrx = new RemainderRegex();
     	arrayrx.add(remainderrx);
     	
@@ -62,8 +72,8 @@ public class Main {
     	arrayrx2.add(voidrx);
     	ReturnRegex returnrx = new ReturnRegex();
     	arrayrx2.add(returnrx);
-    	MainDeclRegex mainrx = new MainDeclRegex();
-    	arrayrx2.add(mainrx);
+//    	MainDeclRegex mainrx = new MainDeclRegex();
+//    	arrayrx2.add(mainrx);
     	
     	//Break
     	BreakRegex breakrx = new BreakRegex();
@@ -74,6 +84,8 @@ public class Main {
     	//Class
     	ExtendRegex extendrx = new ExtendRegex();
     	arrayrx3.add(extendrx);
+    	InterfaceDeclRegex interfacerx = new InterfaceDeclRegex();
+    	arrayrx3.add(interfacerx);
     	ThisRegex thisrx = new ThisRegex();
     	arrayrx3.add(thisrx);
     	PublicRegex publicrx = new PublicRegex();
@@ -90,14 +102,14 @@ public class Main {
     	Change c = new Change();
     	c.setBefore(program);
     	
-    	String fileName = "/Users/zahra/Documents/workspace/Regex/out/";
+    	String fileName = "/Users/zahra/Documents/workspace/Game-Regex/src/test/output/";
     	String fileName2 = "";
     	for (int i=0; i<arrayrx.size(); i++){
     		if (isContain(program,arrayrx.get(i))){
     			System.out.println("********************* "+ arrayrx.get(i).getName());
     			System.out.println(c.getBefore());
     			arrayrx.get(i).change(c);
-    			fileName2 = fileName + Integer.toString(i) + ".txt";
+    			fileName2 = fileName + "/6/" + Integer.toString(i) + ".java";
     			String newProgram = c.getAfter();
     			writeTest(c.getAfter(),(fileName2));
     			c.setBefore(newProgram);

@@ -39,7 +39,7 @@ public class SubstituteRegex extends Regex{
 		System.out.println(parts[rnd]);
 		mutatedCode = m.replaceFirst(parts[rnd]);
 //		System.out.println(mutatedCode);
-		c.setAfter( parts[rnd] + ","  + mutatedCode);
+		c.setAfter( parts[rnd] + mutatedCode);
 		return c;
 	}
 	
