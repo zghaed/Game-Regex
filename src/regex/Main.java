@@ -6,13 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
 
 	public static void main(String [] args) {
-		String adr = "/Users/zahra/Documents/workspace/Game-Regex/src/test/input/6.java";
+		String adr = "/Users/zahra/Documents/workspace/CheckStyle/src/18.java";
     	String program = readTest(adr);
     	ArrayList<Regex> arrayrx = new ArrayList<Regex>();
     	ArrayList<Regex> arrayrx2 = new ArrayList<Regex>();
@@ -102,14 +103,28 @@ public class Main {
     	Change c = new Change();
     	c.setBefore(program);
     	
-    	String fileName = "/Users/zahra/Documents/workspace/Game-Regex/src/test/output/";
+    	String fileName = "/Users/zahra/Documents/workspace/CheckStyle/out/18/";
     	String fileName2 = "";
-    	for (int i=0; i<arrayrx.size(); i++){
-    		if (isContain(program,arrayrx.get(i))){
+    	
+    	int complete = 0;
+    	ArrayList<Integer> seen = new ArrayList<Integer>();
+    	arrayrx.addAll(arrayrx2);
+    	arrayrx.addAll(arrayrx3);
+    	for (int i=0 ;i< arrayrx.size();i++)
+    	System.out.println(arrayrx.get(i));
+    	
+    	while (complete<5)
+    	{
+    		
+    		int i = new Random().nextInt(arrayrx.size());
+    		System.out.println("********************* " + i);
+    		if (isContain(program,arrayrx.get(i)) && !seen.contains(i)){
+    			seen.add(i);
+    			complete += 1;
     			System.out.println("********************* "+ arrayrx.get(i).getName());
     			System.out.println(c.getBefore());
     			arrayrx.get(i).change(c);
-    			fileName2 = fileName + "/6/" + Integer.toString(i) + ".java";
+    			fileName2 = fileName + "/5/" + Integer.toString(i) + ".java";
     			String newProgram = c.getAfter();
     			writeTest(c.getAfter(),(fileName2));
     			c.setBefore(newProgram);
